@@ -12,6 +12,14 @@ def create_user(username, password):
     return new_user
 
 
+def create_credential(account, password):
+    '''
+    Function to create a new credential
+    '''
+    new_credential = Credentials(account, password)
+    return new_credential
+
+
 def save_credential(credential):
     '''
     Function to create a new credential
@@ -26,20 +34,18 @@ def display_credentials():
     return Credentials.display_credentials()
 
 
+def find_credential(account):
+    '''
+    Function that finds a credential by account and returns the credential
+    '''
+    return Credentials.find_by_account(account)
+
+
 def delete_credential(credential):
     '''
     Function to delete a credential
     '''
     credential.delete_credential()
-
-
-def create_credential(account, password):
-    '''
-    Function to create a new credential
-    '''
-
-    new_credential = Credentials(account, password)
-    return new_credential
 
 
 def main():
@@ -99,6 +105,17 @@ def main():
             else:
                 print('\n')
                 print("You dont seem to have any credentials saved yet")
+                print('\n')
+
+        elif short_code == "del":
+            print("Enter the account name you want to delete:")
+            account = input()
+            if find_credential(account):
+                delete_credential(find_credential(account))
+                print("Credential has been deleted")
+                print('\n')
+            else:
+                print("That credential does not exist")
                 print('\n')
 
         elif short_code == "exit":
