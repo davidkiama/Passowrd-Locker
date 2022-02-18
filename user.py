@@ -4,9 +4,8 @@ class User:
         self.username = username
         self.password = password
 
-    @classmethod
-    def check_password(cls, password):
-        if cls.password == password:
+    def check_password(self, password):
+        if self.password == password:
             return True
         else:
             print("Wrong password")

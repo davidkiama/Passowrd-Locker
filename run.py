@@ -12,6 +12,16 @@ def create_user(username, password):
     return new_user
 
 
+def check_password(password):
+    return User.check_password(password)
+
+
+def ask_password():
+    print("Enter User password:")
+    password = input()
+    return password
+
+
 def create_credential(account, password):
     '''
     Function to create a new credential
@@ -64,7 +74,7 @@ def main():
         dc - Display credentials,
         cc - Create a new credential,
         del- delete a credential, 
-        ex -exit the contact list """)
+        exit -exit the contact list """)
 
         short_code = input().lower()
 
@@ -94,29 +104,34 @@ def main():
 
         elif short_code == "dc":
 
-            if display_credentials():
-                print("Here is a list of all your credentials")
-                print('\n')
+            user_password = ask_password()
+            if user.check_password(user_password):
 
-                for credential in display_credentials():
-                    print(f"{credential.account} {credential.password}")
+                if display_credentials():
+                    print("Here is a list of all your credentials")
+                    print('\n')
 
-                print('\n')
-            else:
-                print('\n')
-                print("You dont seem to have any credentials saved yet")
-                print('\n')
+                    for credential in display_credentials():
+                        print(f"{credential.account} {credential.password}")
+
+                    print('\n')
+                else:
+                    print('\n')
+                    print("You dont seem to have any credentials saved yet")
+                    print('\n')
 
         elif short_code == "del":
-            print("Enter the account name you want to delete:")
-            account = input()
-            if find_credential(account):
-                delete_credential(find_credential(account))
-                print("Credential has been deleted")
-                print('\n')
-            else:
-                print("That credential does not exist")
-                print('\n')
+            user_password = ask_password()
+            if user.check_password(user_password):
+                print("Enter the account name you want to delete:")
+                account = input()
+                if find_credential(account):
+                    delete_credential(find_credential(account))
+                    print("Credential has been deleted")
+                    print('\n')
+                else:
+                    print("That credential does not exist")
+                    print('\n')
 
         elif short_code == "exit":
             print("Logging out .......")
