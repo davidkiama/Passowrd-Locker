@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import random
+
 from user import User
 from credentials import Credentials
 
@@ -19,6 +21,24 @@ def check_password(password):
 def ask_password():
     print("Enter User password:")
     password = input()
+    return password
+
+
+def generate_password():
+    '''
+    Function to generate a password
+    '''
+    password_list = []
+    characters_upper = 'abcdefghijklmnopqrstuvwxyz'.upper()
+    characters_lower = 'abcdefghijklmnopqrstuvwxyz'.lower()
+    numbers = '0123456789'
+    symbols = '!@#$%&*'
+    for i in range(3):
+        password_list.append(random.choice(characters_upper))
+        password_list.append(random.choice(characters_lower))
+        password_list.append(random.choice(numbers))
+        password_list.append(random.choice(symbols))
+    password = ''.join(password_list)
     return password
 
 
@@ -93,7 +113,7 @@ def main():
             pwd_option = input().lower()
 
             if pwd_option == "y":
-                password = "aqwertiuytrewq"
+                password = generate_password()
                 print("Your password is: " + password)
 
             else:
