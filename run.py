@@ -87,6 +87,7 @@ def main():
             print('\n')
 
         elif short_code == "dc":
+
             if display_credentials():
                 print("Here is a list of all your credentials")
                 print('\n')
@@ -99,6 +100,12 @@ def main():
                 print('\n')
                 print("You dont seem to have any credentials saved yet")
                 print('\n')
+
+        elif short_code == "exit":
+            print("Logging out .......")
+            break
+        else:
+            print("Please use the short codes provided")
 
 
 if __name__ == '__main__':
