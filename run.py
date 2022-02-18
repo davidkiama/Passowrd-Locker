@@ -33,22 +33,10 @@ def delete_credential(credential):
     credential.delete_credential()
 
 
-def create_credential():
+def create_credential(account, password):
     '''
     Function to create a new credential
     '''
-    print("Enter your account name:")
-    account = input()
-    print("Would you like to use a suggested password: (y/n)")
-    pwd_option = input().lower()
-
-    if pwd_option == "y":
-        password = "aqwertiuytrewq"
-        print("Your password is: " + password)
-
-    else:
-        print("Enter your password:")
-        password = input()
 
     new_credential = Credentials(account, password)
     return new_credential
@@ -62,6 +50,55 @@ def main():
     password = input()
     user = create_user(username, password)
     print(f"Hello {user.username}. what would you like to do?")
+    print('\n')
+
+    while True:
+        print("""Use these short codes : 
+        sc - Store existing credentials,
+        dc - Display credentials,
+        cc - Create a new credential,
+        del- delete a credential, 
+        ex -exit the contact list """)
+
+        short_code = input().lower()
+
+        if short_code == "sc":
+            print("Enter your account name:")
+            account = input()
+            print("Enter your password:")
+            password = input()
+            save_credential(create_credential(account, password))
+            print('\n')
+
+        elif short_code == "cc":
+            print("Enter your account name:")
+            account = input()
+            print("Would you like to use a suggested password: (y/n)")
+            pwd_option = input().lower()
+
+            if pwd_option == "y":
+                password = "aqwertiuytrewq"
+                print("Your password is: " + password)
+
+            else:
+                print("Enter your preferred password:")
+                password = input()
+            save_credential(create_credential(account, password))
+            print('\n')
+
+        elif short_code == "dc":
+            if display_credentials():
+                print("Here is a list of all your credentials")
+                print('\n')
+
+                for credential in display_credentials():
+                    print(f"{credential.account} {credential.password}")
+
+                print('\n')
+            else:
+                print('\n')
+                print("You dont seem to have any credentials saved yet")
+                print('\n')
 
 
 if __name__ == '__main__':
