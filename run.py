@@ -32,22 +32,37 @@ def delete_credential(credential):
     '''
     credential.delete_credential()
 
-# def create_credential():
-#     '''
-#     Function to create a new credential
-#     '''
-#     print("Enter your account name:")
-#     account = input()
-#     print("Would you like to use a suggested password: (y/n)")
-#     pwd_option = input().lower()
 
-#     if pwd_option == "y":
-#         password = "aqwertiuytrewq"
-#         print("Your password is: " + password)
+def create_credential():
+    '''
+    Function to create a new credential
+    '''
+    print("Enter your account name:")
+    account = input()
+    print("Would you like to use a suggested password: (y/n)")
+    pwd_option = input().lower()
 
-#     else:
-#         print("Enter your password:")
-#         password = input()
+    if pwd_option == "y":
+        password = "aqwertiuytrewq"
+        print("Your password is: " + password)
 
-#     new_credential = Credentials(account, password)
-#     return new_credential
+    else:
+        print("Enter your password:")
+        password = input()
+
+    new_credential = Credentials(account, password)
+    return new_credential
+
+
+def main():
+    print("Welcome to Password Locker App")
+    print("What is your name?")
+    username = input()
+    print("Enter your password:")
+    password = input()
+    user = create_user(username, password)
+    print(f"Hello {user.username}. what would you like to do?")
+
+
+if __name__ == '__main__':
+    main()
