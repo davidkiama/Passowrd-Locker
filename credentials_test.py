@@ -36,6 +36,14 @@ class TestCredentials(unittest.TestCase):
         # test if the list has one less item
         self.assertEqual(len(Credentials.credentials_list), 1)
 
+    def test_display_credentials(self):
+        """
+        Test to confirm if the list of credentials is the same as the 
+        the one returned by display_credentials function 
+        """
+        self.assertEqual(Credentials.display_credentials(),
+                         Credentials.credentials_list)
+
 
 if __name__ == '__main__':
     unittest.main()
