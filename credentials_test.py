@@ -24,6 +24,18 @@ class TestCredentials(unittest.TestCase):
     def tearDown(self):
         Credentials.credentials_list = []
 
+    def test_delete_credential(self):
+        """
+        Test to confirm if a credential is removed from the credentials list
+        """
+        self.new_credential.save_credential()  # QUESTION: Why is this here?
+        test_credential = Credentials("Twitter", "12345678")
+        test_credential.save_credential()
+
+        self.new_credential.delete_credential()
+        # test if the list has one less item
+        self.assertEqual(len(Credentials.credentials_list), 1)
+
 
 if __name__ == '__main__':
     unittest.main()
