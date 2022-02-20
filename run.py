@@ -26,7 +26,7 @@ def ask_password():
 
 def generate_password():
     '''
-    Function to generate a password
+    Function to generate a random password
     '''
     password_list = []
     characters_upper = 'abcdefghijklmnopqrstuvwxyz'.upper()
@@ -52,7 +52,7 @@ def create_credential(account, password):
 
 def save_credential(credential):
     '''
-    Function to create a new credential
+    Function to save new credential to the credential list
     '''
     credential.save_credential()
 
