@@ -15,10 +15,16 @@ def create_user(username, password):
 
 
 def check_password(password):
+    """
+    Function to check if the password entered is correct
+    """
     return User.check_password(password)
 
 
 def ask_password():
+    """
+    Function to ask for password when necessary
+    """
     print("Enter User password:")
     password = input()
     return password
@@ -79,6 +85,10 @@ def delete_credential(credential):
 
 
 def main():
+    """
+    Function to run the program
+    """
+
     print("Welcome to Password Locker App")
     print("What is your name?")
     username = input()
